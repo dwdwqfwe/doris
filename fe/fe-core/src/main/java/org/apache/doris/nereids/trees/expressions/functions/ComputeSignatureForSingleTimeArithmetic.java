@@ -60,7 +60,7 @@ public interface ComputeSignatureForSingleTimeArithmetic extends ComputeSignatur
     /**
      * Check if the string is in a valid time format.
      */
-    default boolean isTimeFormat(String s) {
+    static boolean isTimeFormat(String s) {
         if (s == null || s.isEmpty()) {
             return false;
         }
@@ -84,7 +84,7 @@ public interface ComputeSignatureForSingleTimeArithmetic extends ComputeSignatur
     /**
      * Check if the string is in HH:MM[:SS[.FFFFFF]] format.
      */
-    default boolean isColonTimeFormat(String s) {
+    static boolean isColonTimeFormat(String s) {
         String[] parts = s.split("\\.", 2);
         String timePart = parts[0];
 
@@ -105,7 +105,7 @@ public interface ComputeSignatureForSingleTimeArithmetic extends ComputeSignatur
     /**
      * Check if the string is in numeric format: continuous digits [ .FFFFFF ]
      */
-    default boolean isNumericTimeFormat(String s) {
+    static boolean isNumericTimeFormat(String s) {
         String[] parts = s.split("\\.", 2);
         String numberPart = parts[0];
 

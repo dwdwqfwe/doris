@@ -593,10 +593,10 @@ suite("test_date_function") {
         """
     
     // Test SECOND function with time_str column
-    qt_sql_table_second_all """ select second(time_str) from ${tableName} order by id; """
-    
-    // Test MICROSECOND function with time_str column  
-    qt_sql_table_microsecond_all """ select microsecond(time_str) from ${tableName} order by id; """
+    qt_sql_table_second_all """ select second(cast(time_str as time)) from ${tableName} order by id; """
+
+    // Test MICROSECOND function with time_str column
+    qt_sql_table_microsecond_all """ select microsecond(cast(time_str as time(6))) from ${tableName} order by id; """
 
     tableName = "test_from_unixtime"
 
@@ -698,7 +698,7 @@ suite("test_date_function") {
     qt_sql """ select hours_sub(test_time,1) result from ${tableName}; """
     //minutes_sub
     qt_sql """ select minutes_sub(test_time,1) result from ${tableName}; """
-    //seconds_sub
+    //seconds_sub 
     qt_sql """ select seconds_sub(test_time,1) result from ${tableName}; """
 
     qt_sql """ select date_add(NULL, INTERVAL 1 month); """

@@ -924,7 +924,7 @@ public class ScalarType extends Type {
             return true;
         }
         if (isTimeV2() && scalarType.isTimeV2()) {
-            return true;
+            return this.decimalScale() == scalarType.decimalScale();
         }
         if (isVariantType() && scalarType.isVariantType()) {
             return true;
@@ -1158,6 +1158,9 @@ public class ScalarType extends Type {
                 (t1.type.ordinal() > t2.type.ordinal() ? t1.type : t2.type);
         PrimitiveType result = null;
         if (t1.isDatetimeV2() && t2.isDatetimeV2()) {
+            return t1.scale > t2.scale ? t1 : t2;
+        }
+        if (t1.isTimeV2() && t2.isTimeV2()) {
             return t1.scale > t2.scale ? t1 : t2;
         }
         if ((t1.isDatetimeV2() || t1.isDateV2()) && (t2.isDatetimeV2() || t2.isDateV2())) {
