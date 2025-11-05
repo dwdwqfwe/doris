@@ -24,16 +24,12 @@
 
 namespace doris::vectorized {
 
-using FunctionDateFormat = FunctionDateTimeStringToString<DateFormatImpl<TYPE_DATE>>;
-using FunctionDateTimeFormat = FunctionDateTimeStringToString<DateFormatImpl<TYPE_DATETIME>>;
 using FunctionDateFormatV2 = FunctionDateTimeStringToString<DateFormatImpl<TYPE_DATEV2>>;
 using FunctionDateTimeV2DateFormat =
         FunctionDateTimeStringToString<DateFormatImpl<TYPE_DATETIMEV2>>;
 using FunctionFromUnixTime = FunctionDateTimeStringToString<FromUnixTimeImpl>;
 
 void register_function_date_time_string_to_string(SimpleFunctionFactory& factory) {
-    factory.register_function<FunctionDateFormat>();
-    factory.register_function<FunctionDateTimeFormat>();
     factory.register_function<FunctionDateFormatV2>();
     factory.register_function<FunctionFromUnixTime>();
     factory.register_function<FunctionDateTimeV2DateFormat>();

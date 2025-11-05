@@ -576,6 +576,7 @@ struct FunctionFieldImpl {
             }
             break;
         }
+<<<<<<< HEAD
         case PrimitiveType::TYPE_DATETIME: {
             for (int col = 1; col < arguments.size(); ++col) {
                 if (arg_const) {
@@ -604,6 +605,8 @@ struct FunctionFieldImpl {
             }
             break;
         }
+=======
+>>>>>>> a77e7c587a ([fix](function) Align function signatures between backend and frontend and remove datev1 types (#56807))
         case PrimitiveType::TYPE_DATEV2: {
             for (int col = 1; col < arguments.size(); ++col) {
                 if (arg_const) {

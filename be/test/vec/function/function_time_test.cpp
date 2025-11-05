@@ -36,7 +36,7 @@ using namespace ut_type;
 TEST(VTimestampFunctionsTest, day_of_week_test) {
     std::string func_name = "dayofweek";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2001-02-03 12:34:56")}, int8_t {7}},
                         {{std::string("2020-00-01 00:00:00")}, Null()},
@@ -48,7 +48,7 @@ TEST(VTimestampFunctionsTest, day_of_week_test) {
 TEST(VTimestampFunctionsTest, day_of_month_test) {
     std::string func_name = "dayofmonth";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2020-00-01 00:00:00")}, Null()},
                         {{std::string("2020-01-01 00:00:00")}, int8_t {1}},
@@ -60,7 +60,7 @@ TEST(VTimestampFunctionsTest, day_of_month_test) {
 TEST(VTimestampFunctionsTest, day_of_year_test) {
     std::string func_name = "dayofyear";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2020-00-01 00:00:00")}, Null()},
                         {{std::string("2020-01-00 00:00:00")}, Null()},
@@ -72,7 +72,7 @@ TEST(VTimestampFunctionsTest, day_of_year_test) {
 TEST(VTimestampFunctionsTest, week_of_year_test) {
     std::string func_name = "weekofyear";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2020-00-01 00:00:00")}, Null()},
                         {{std::string("2020-01-00 00:00:00")}, Null()},
@@ -84,7 +84,7 @@ TEST(VTimestampFunctionsTest, week_of_year_test) {
 TEST(VTimestampFunctionsTest, year_test) {
     std::string func_name = "year";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2021-01-01 00:00:00")}, int16_t {2021}},
                         {{std::string("2021-01-00 00:00:00")}, Null()},
@@ -96,7 +96,7 @@ TEST(VTimestampFunctionsTest, year_test) {
 TEST(VTimestampFunctionsTest, quarter_test) {
     std::string func_name = "quarter";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2021-01-01 00:00:00")}, int8_t {1}},
                         {{Null()}, Null()},
@@ -109,7 +109,7 @@ TEST(VTimestampFunctionsTest, quarter_test) {
 TEST(VTimestampFunctionsTest, month_test) {
     std::string func_name = "month";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2021-01-01 00:00:00")}, int8_t {1}},
                         {{Null()}, Null()},
@@ -122,7 +122,7 @@ TEST(VTimestampFunctionsTest, month_test) {
 TEST(VTimestampFunctionsTest, day_test) {
     std::string func_name = "day";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2021-01-01 00:00:00")}, int8_t {1}},
                         {{Null()}, Null()},
@@ -135,7 +135,7 @@ TEST(VTimestampFunctionsTest, day_test) {
 TEST(VTimestampFunctionsTest, hour_test) {
     std::string func_name = "hour";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2021-01-01 23:59:59")}, int8_t {23}},
                         {{std::string("2021-01-13 16:56:00")}, int8_t {16}},
@@ -148,7 +148,7 @@ TEST(VTimestampFunctionsTest, hour_test) {
 TEST(VTimestampFunctionsTest, minute_test) {
     std::string func_name = "minute";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2021-01-01 23:59:50")}, int8_t {59}},
                         {{std::string("2021-01-13 16:20:00")}, int8_t {20}},
@@ -161,7 +161,7 @@ TEST(VTimestampFunctionsTest, minute_test) {
 TEST(VTimestampFunctionsTest, second_test) {
     std::string func_name = "second";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2021-01-01 23:50:59")}, int8_t {59}},
                         {{std::string("2021-01-13 16:20:00")}, int8_t {0}},
@@ -238,7 +238,7 @@ TEST(VTimestampFunctionsTest, unix_timestamp_test) {
 TEST(VTimestampFunctionsTest, timediff_test) {
     std::string func_name = "timediff";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2, PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {
             {{std::string("2019-07-18 12:00:00"), std::string("2019-07-18 12:00:00")},
@@ -298,7 +298,7 @@ TEST(VTimestampFunctionsTest, convert_tz_test) {
 TEST(VTimestampFunctionsTest, date_format_test) {
     std::string func_name = "date_format";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME,
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2,
                                 Consted {PrimitiveType::TYPE_VARCHAR}};
     {
         DataSet data_set = {{{std::string("2009-10-04 22:23:00"), std::string("%W %M %Y")},
@@ -346,248 +346,22 @@ TEST(VTimestampFunctionsTest, date_format_test) {
     }
 }
 
-TEST(VTimestampFunctionsTest, years_add_test) {
-    std::string func_name = "years_add";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    {
-        DataSet data_set = {
-                {{std::string("2020-05-23 00:00:00"), 5}, std::string("2025-05-23 00:00:00")},
-                {{std::string("2020-05-23 00:00:00"), -5}, std::string("2015-05-23 00:00:00")},
-                {{Null(), 5}, Null()},
-                {{Null(), 5}, Null()}};
-
-        static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-    }
-
-    {
-        DataSet data_set = {{{std::string("2020-05-23 00:00:00"), 8000}, Null()}};
-
-        EXPECT_ANY_THROW(static_cast<void>(
-                check_function<DataTypeDateTime, true>(func_name, input_types, data_set)));
-    }
-}
-
-TEST(VTimestampFunctionsTest, years_sub_test) {
-    std::string func_name = "years_sub";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    {
-        DataSet data_set = {
-                {{std::string("2020-05-23 00:00:00"), 5}, std::string("2015-05-23 00:00:00")},
-                {{std::string("2020-05-23 00:00:00"), -5}, std::string("2025-05-23 00:00:00")},
-                {{Null(), 5}, Null()},
-                {{Null(), 5}, Null()}};
-
-        static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-    }
-
-    {
-        DataSet data_set = {{{std::string("2020-05-23 00:00:00"), 3000}, Null()}};
-
-        EXPECT_ANY_THROW(static_cast<void>(
-                check_function<DataTypeDateTime, true>(func_name, input_types, data_set)));
-    }
-}
-
-TEST(VTimestampFunctionsTest, months_add_test) {
-    std::string func_name = "months_add";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-10-23 00:00:00"), -4}, std::string("2020-06-23 00:00:00")},
-            {{std::string("2020-05-23 00:00:00"), 4}, std::string("2020-09-23 00:00:00")},
-            {{std::string("2020-05-23 00:00:00"), 10}, std::string("2021-03-23 00:00:00")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, months_sub_test) {
-    std::string func_name = "months_sub";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-05-23 00:00:00"), 4}, std::string("2020-01-23 00:00:00")},
-            {{std::string("2020-05-23 00:00:00"), -4}, std::string("2020-09-23 00:00:00")},
-            {{std::string("2020-05-23 00:00:00"), 10}, std::string("2019-07-23 00:00:00")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, days_add_test) {
-    std::string func_name = "days_add";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-10-23 00:00:00"), -4}, std::string("2020-10-19 00:00:00")},
-            {{std::string("2020-05-23 00:00:00"), 4}, std::string("2020-05-27 00:00:00")},
-            {{std::string("2020-05-23 00:00:00"), 10}, std::string("2020-06-2 00:00:00")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, days_sub_test) {
-    std::string func_name = "days_sub";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-05-23 00:00:00"), 4}, std::string("2020-05-19 00:00:00")},
-            {{std::string("2020-05-23 00:00:00"), -4}, std::string("2020-05-27 00:00:00")},
-            {{std::string("2020-05-23 00:00:00"), 31}, std::string("2020-04-22 00:00:00")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, hours_add_test) {
-    std::string func_name = "hours_add";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-10-23 10:00:00"), -4}, std::string("2020-10-23 06:00:00")},
-            {{std::string("2020-05-23 10:00:00"), 4}, std::string("2020-05-23 14:00:00")},
-            {{std::string("2020-05-23 10:00:00"), 100}, std::string("2020-05-27 14:00:00")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, hours_sub_test) {
-    std::string func_name = "hours_sub";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-05-23 10:00:00"), 4}, std::string("2020-05-23 06:00:00")},
-            {{std::string("2020-05-23 10:00:00"), -4}, std::string("2020-05-23 14:00:00")},
-            {{std::string("2020-05-23 10:00:00"), 31}, std::string("2020-05-22 03:00:00")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, minutes_add_test) {
-    std::string func_name = "minutes_add";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-10-23 10:00:00"), 40}, std::string("2020-10-23 10:40:00")},
-            {{std::string("2020-05-23 10:00:00"), -40}, std::string("2020-05-23 09:20:00")},
-            {{std::string("2020-05-23 10:00:00"), 100}, std::string("2020-05-23 11:40:00")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, minutes_sub_test) {
-    std::string func_name = "minutes_sub";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-05-23 10:00:00"), 40}, std::string("2020-05-23 09:20:00")},
-            {{std::string("2020-05-23 10:00:00"), -40}, std::string("2020-05-23 10:40:00")},
-            {{std::string("2020-05-23 10:00:00"), 100}, std::string("2020-05-23 08:20:00")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, seconds_add_test) {
-    std::string func_name = "seconds_add";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-10-23 10:00:00"), 40}, std::string("2020-10-23 10:00:40")},
-            {{std::string("2020-05-23 10:00:00"), -40}, std::string("2020-05-23 09:59:20")},
-            {{std::string("2020-05-23 10:00:00"), 100}, std::string("2020-05-23 10:01:40")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, seconds_sub_test) {
-    std::string func_name = "seconds_sub";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-05-23 10:00:00"), 40}, std::string("2020-05-23 09:59:20")},
-            {{std::string("2020-05-23 10:00:00"), -40}, std::string("2020-05-23 10:00:40")},
-            {{std::string("2020-05-23 10:00:00"), 100}, std::string("2020-05-23 09:58:20")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, weeks_add_test) {
-    std::string func_name = "weeks_add";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-10-23 10:00:00"), 5}, std::string("2020-11-27 10:00:00")},
-            {{std::string("2020-05-23 10:00:00"), -5}, std::string("2020-04-18 10:00:00")},
-            {{std::string("2020-05-23 10:00:00"), 100}, std::string("2022-04-23 10:00:00")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, weeks_sub_test) {
-    std::string func_name = "weeks_sub";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME, PrimitiveType::TYPE_INT};
-
-    DataSet data_set = {
-            {{std::string("2020-05-23 10:00:00"), 5}, std::string("2020-04-18 10:00:00")},
-            {{std::string("2020-05-23 10:00:00"), -5}, std::string("2020-6-27 10:00:00")},
-            {{std::string("2020-05-23 10:00:00"), 100}, std::string("2018-06-23 10:00:00")},
-            {{Null(), 4}, Null()}};
-
-    static_cast<void>(check_function<DataTypeDateTime, true>(func_name, input_types, data_set));
-}
-
-TEST(VTimestampFunctionsTest, to_days_test) {
-    std::string func_name = "to_days";
-
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
-
-    DataSet data_set = {{{std::string("2021-01-01 00:00:00")}, 738156},
-                        {{Null()}, Null()},
-                        {{std::string("2021-01-32 00:00:00")}, Null()}};
-
-    static_cast<void>(check_function<DataTypeInt32, true>(func_name, input_types, data_set));
-}
-
 TEST(VTimestampFunctionsTest, date_test) {
     std::string func_name = "date";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("2021-01-01 06:00:00")}, std::string("2021-01-01")},
                         {{Null()}, Null()},
                         {{Null()}, Null()}};
 
-    static_cast<void>(check_function<DataTypeDate, true>(func_name, input_types, data_set));
+    static_cast<void>(check_function<DataTypeDateV2, true>(func_name, input_types, data_set));
 }
 
 TEST(VTimestampFunctionsTest, week_test) {
     std::string func_name = "week";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("1989-03-21 06:00:00")}, int8_t {12}},
                         {{Null()}, Null()},
@@ -599,7 +373,7 @@ TEST(VTimestampFunctionsTest, week_test) {
 TEST(VTimestampFunctionsTest, yearweek_test) {
     std::string func_name = "yearweek";
 
-    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+    InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
     DataSet data_set = {{{std::string("1989-03-21 06:00:00")}, 198912},
                         {{Null()}, Null()},
@@ -628,7 +402,7 @@ TEST(VTimestampFunctionsTest, weekday_test) {
     std::string func_name = "weekday";
 
     {
-        InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+        InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
         DataSet data_set = {{{std::string("2001-02-03 12:34:56")}, int8_t {5}},
                             {{std::string("2019-06-25")}, int8_t {1}},
@@ -1386,16 +1160,6 @@ TEST(VTimestampFunctionsTest, to_days_v2_test) {
 
         static_cast<void>(check_function<DataTypeInt32, true>(func_name, input_types, data_set));
     }
-    {
-        InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
-
-        DataSet data_set = {{{std::string("2021-01-01 00:00:11.123")}, 738156},
-                            {{Null()}, Null()},
-                            {{std::string("2021-01-32 00:00:11.123")}, Null()},
-                            {{std::string("0000-01-01 00:00:11.123")}, 1}};
-
-        static_cast<void>(check_function<DataTypeInt32, true>(func_name, input_types, data_set));
-    }
 }
 
 TEST(VTimestampFunctionsTest, date_v2_test) {
@@ -1533,7 +1297,7 @@ TEST(VTimestampFunctionsTest, dayname_test) {
     }
 
     {
-        InputTypeSet input_types = {PrimitiveType::TYPE_DATETIME};
+        InputTypeSet input_types = {PrimitiveType::TYPE_DATETIMEV2};
 
         DataSet data_set = {{{std::string("2007-02-03 00:00:00")}, std::string("Saturday")},
                             {{std::string("2020-01-00 00:00:00")}, Null()}};

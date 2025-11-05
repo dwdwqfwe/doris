@@ -779,4 +779,59 @@ public class TypeCoercionUtilsTest {
         Assertions.assertEquals(DecimalV3Type.createDecimalV3Type(23, 3), smallIntString.getCompareExpr().getDataType());
         Assertions.assertEquals(DecimalV3Type.createDecimalV3Type(23, 3), smallIntString.getOptions().get(0).getDataType());
     }
+
+    @Test
+    public void testCharacterLiteralTypeCoercion() {
+        // datev2
+        Assertions.assertEquals(DateV2Type.INSTANCE,
+                TypeCoercionUtils.characterLiteralTypeCoercion("2020-02-02", DateV2Type.INSTANCE).get().getDataType());
+        // datetimev2
+        Assertions.assertEquals(DateTimeV2Type.of(0),
+                TypeCoercionUtils.characterLiteralTypeCoercion("2020-02-02", DateTimeV2Type.of(0)).get().getDataType());
+        // date
+        Assertions.assertEquals(DateV2Type.INSTANCE,
+                        TypeCoercionUtils.characterLiteralTypeCoercion("2020-02-02", DateType.INSTANCE).get()
+                                        .getDataType());
+        // datetime
+        Assertions.assertEquals(DateTimeV2Type.SYSTEM_DEFAULT,
+                                TypeCoercionUtils.characterLiteralTypeCoercion("2020-02-02", DateTimeType.INSTANCE).get().getDataType());
+    }
+
+    @Test
+    public void testGetNumResultType() {
+        // Numeric type
+        Assertions.assertEquals(TinyIntType.INSTANCE, TypeCoercionUtils.getNumResultType(TinyIntType.INSTANCE));
+        Assertions.assertEquals(SmallIntType.INSTANCE, TypeCoercionUtils.getNumResultType(SmallIntType.INSTANCE));
+        Assertions.assertEquals(IntegerType.INSTANCE, TypeCoercionUtils.getNumResultType(IntegerType.INSTANCE));
+        Assertions.assertEquals(BigIntType.INSTANCE, TypeCoercionUtils.getNumResultType(BigIntType.INSTANCE));
+        Assertions.assertEquals(LargeIntType.INSTANCE, TypeCoercionUtils.getNumResultType(LargeIntType.INSTANCE));
+        Assertions.assertEquals(FloatType.INSTANCE, TypeCoercionUtils.getNumResultType(FloatType.INSTANCE));
+        Assertions.assertEquals(DoubleType.INSTANCE, TypeCoercionUtils.getNumResultType(DoubleType.INSTANCE));
+        Assertions.assertEquals(DecimalV3Type.INSTANCE, TypeCoercionUtils.getNumResultType(DecimalV3Type.INSTANCE));
+        // Null type
+        Assertions.assertEquals(TinyIntType.INSTANCE, TypeCoercionUtils.getNumResultType(NullType.INSTANCE));
+        // Boolean type
+        Assertions.assertEquals(TinyIntType.INSTANCE, TypeCoercionUtils.getNumResultType(BooleanType.INSTANCE));
+        // Date like type
+        Assertions.assertEquals(BigIntType.INSTANCE, TypeCoercionUtils.getNumResultType(DateType.INSTANCE));
+        Assertions.assertEquals(BigIntType.INSTANCE, TypeCoercionUtils.getNumResultType(DateV2Type.INSTANCE));
+        Assertions.assertEquals(BigIntType.INSTANCE, TypeCoercionUtils.getNumResultType(DateTimeType.INSTANCE));
+        Assertions.assertEquals(BigIntType.INSTANCE, TypeCoercionUtils.getNumResultType(DateTimeV2Type.SYSTEM_DEFAULT));
+        // String like type
+        Assertions.assertEquals(DoubleType.INSTANCE, TypeCoercionUtils.getNumResultType(StringType.INSTANCE));
+        Assertions.assertEquals(DoubleType.INSTANCE, TypeCoercionUtils.getNumResultType(VarcharType.SYSTEM_DEFAULT));
+        Assertions.assertEquals(DoubleType.INSTANCE, TypeCoercionUtils.getNumResultType(CharType.SYSTEM_DEFAULT));
+        // Hll type
+        Assertions.assertEquals(DoubleType.INSTANCE, TypeCoercionUtils.getNumResultType(HllType.INSTANCE));
+        // Time type
+        Assertions.assertEquals(DoubleType.INSTANCE, TypeCoercionUtils.getNumResultType(TimeV2Type.SYSTEM_DEFAULT));
+        // Json
+        Assertions.assertEquals(DoubleType.INSTANCE, TypeCoercionUtils.getNumResultType(JsonType.INSTANCE));
+        // Other
+        Assertions.assertThrows(AnalysisException.class, () -> TypeCoercionUtils.getNumResultType(BitmapType.INSTANCE));
+        Assertions.assertThrows(AnalysisException.class, () -> TypeCoercionUtils.getNumResultType(ArrayType.SYSTEM_DEFAULT));
+        Assertions.assertThrows(AnalysisException.class, () -> TypeCoercionUtils.getNumResultType(MapType.SYSTEM_DEFAULT));
+        Assertions.assertThrows(AnalysisException.class, () -> TypeCoercionUtils.getNumResultType(StructType.SYSTEM_DEFAULT));
+        Assertions.assertThrows(AnalysisException.class, () -> TypeCoercionUtils.getNumResultType(QuantileStateType.INSTANCE));
+    }
 }

@@ -723,12 +723,41 @@ public:
             }
             return Status::OK();
         }
-        if (left_type->get_primitive_type() == TYPE_DECIMALV2 ||
-            right_type->get_primitive_type() == TYPE_DECIMALV2) {
-            if (!allow_decimal_comparison(left_type, right_type)) {
-                return Status::RuntimeError("No operation {} between {} and {}", get_name(),
-                                            left_type->get_name(), right_type->get_name());
-            }
+
+        auto compare_type = left_type->get_primitive_type();
+        switch (compare_type) {
+        case TYPE_BOOLEAN:
+            return execute_num_type<TYPE_BOOLEAN>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_DATEV2:
+            return execute_num_type<TYPE_DATEV2>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_DATETIMEV2:
+            return execute_num_type<TYPE_DATETIMEV2>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_TINYINT:
+            return execute_num_type<TYPE_TINYINT>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_SMALLINT:
+            return execute_num_type<TYPE_SMALLINT>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_INT:
+            return execute_num_type<TYPE_INT>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_BIGINT:
+            return execute_num_type<TYPE_BIGINT>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_LARGEINT:
+            return execute_num_type<TYPE_LARGEINT>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_IPV4:
+            return execute_num_type<TYPE_IPV4>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_IPV6:
+            return execute_num_type<TYPE_IPV6>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_FLOAT:
+            return execute_num_type<TYPE_FLOAT>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_DOUBLE:
+            return execute_num_type<TYPE_DOUBLE>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_TIME:
+        case TYPE_TIMEV2:
+            return execute_num_type<TYPE_TIMEV2>(block, result, col_left_ptr, col_right_ptr);
+        case TYPE_DECIMALV2:
+        case TYPE_DECIMAL32:
+        case TYPE_DECIMAL64:
+        case TYPE_DECIMAL128I:
+        case TYPE_DECIMAL256:
             return execute_decimal(block, result, col_with_type_and_name_left,
                                    col_with_type_and_name_right);
         }

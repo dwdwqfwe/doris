@@ -207,18 +207,6 @@ TEST_F(TableFunctionTest, vexplode) {
 
         check_vec_table_function(&explode, input_types, input_set, output_types, output_set);
     }
-
-    // explode(Array<Date>)
-    {
-        InputTypeSet input_types = {PrimitiveType::TYPE_ARRAY, PrimitiveType::TYPE_DATE};
-        TestArray vec = {Null(), std::string("2022-01-02")};
-        InputDataSet input_set = {{Null()}, {AnyType {TestArray {}}}, {AnyType {vec}}};
-
-        InputTypeSet output_types = {PrimitiveType::TYPE_DATE};
-        InputDataSet output_set = {{Null()}, {std::string("2022-01-02")}};
-
-        check_vec_table_function(&explode, input_types, input_set, output_types, output_set);
-    }
 }
 
 TEST_F(TableFunctionTest, vexplode_v2) {
@@ -253,19 +241,6 @@ TEST_F(TableFunctionTest, vexplode_v2) {
         InputDataSet output_set = {{{TestArray {std::string("abc")}}},
                                    {{TestArray {std::string("")}}},
                                    {{TestArray {std::string("def")}}}};
-        check_vec_table_function(&explode, input_types, input_set, output_types, output_set);
-    }
-
-    // explode(Array<Date>)
-    {
-        InputTypeSet input_types = {PrimitiveType::TYPE_ARRAY, PrimitiveType::TYPE_DATE};
-        TestArray vec = {Null(), std::string("2022-01-02")};
-        InputDataSet input_set = {{Null()}, {AnyType {TestArray {}}}, {AnyType {vec}}};
-
-        InputTypeSet output_types = {PrimitiveType::TYPE_STRUCT, PrimitiveType::TYPE_DATE};
-
-        InputDataSet output_set = {{{TestArray {Null()}}},
-                                   {{TestArray {std::string("2022-01-02")}}}};
         check_vec_table_function(&explode, input_types, input_set, output_types, output_set);
     }
 }

@@ -19,7 +19,13 @@ package org.apache.doris.nereids.trees.expressions.functions.scalar;
 
 import org.apache.doris.catalog.FunctionSignature;
 import org.apache.doris.nereids.trees.expressions.Expression;
+<<<<<<< HEAD:fe/fe-core/src/main/java/org/apache/doris/nereids/trees/expressions/functions/scalar/JsonbParseNullable.java
 import org.apache.doris.nereids.trees.expressions.functions.AlwaysNullable;
+=======
+import org.apache.doris.nereids.trees.expressions.functions.AlwaysNotNullable;
+import org.apache.doris.nereids.trees.expressions.functions.ComputePrecision;
+import org.apache.doris.nereids.trees.expressions.functions.ComputeSignatureHelper;
+>>>>>>> a77e7c587a ([fix](function) Align function signatures between backend and frontend and remove datev1 types (#56807)):fe/fe-core/src/main/java/org/apache/doris/nereids/trees/expressions/functions/scalar/Crc32Internal.java
 import org.apache.doris.nereids.trees.expressions.functions.ExplicitlyCastableSignature;
 import org.apache.doris.nereids.trees.expressions.shape.UnaryExpression;
 import org.apache.doris.nereids.trees.expressions.visitor.ExpressionVisitor;
@@ -66,4 +72,23 @@ public class JsonbParseNullable extends ScalarFunction
     public <R, C> R accept(ExpressionVisitor<R, C> visitor, C context) {
         return visitor.visitJsonbParseNullable(this, context);
     }
+
+    /**
+     * Override computeSignature to skip legacy date type conversion.
+     * This function needs to preserve the original DateTime/Date types without
+     * converting to V2 types.
+     */
+    @Override
+    public FunctionSignature computeSignature(FunctionSignature signature) {
+        FunctionSignature sig = signature;
+        sig = ComputeSignatureHelper.implementAnyDataTypeWithOutIndexNoLegacyDateUpgrade(sig, getArguments());
+        sig = ComputeSignatureHelper.implementAnyDataTypeWithIndexNoLegacyDateUpgrade(sig, getArguments());
+        sig = ComputeSignatureHelper.computePrecision(this, sig, getArguments());
+        sig = ComputeSignatureHelper.implementFollowToArgumentReturnType(sig, getArguments());
+        sig = ComputeSignatureHelper.normalizeDecimalV2(sig, getArguments());
+        sig = ComputeSignatureHelper.ensureNestedNullableOfArray(sig, getArguments());
+        sig = ComputeSignatureHelper.dynamicComputeVariantArgs(sig, getArguments());
+        return sig;
+    }
+
 }
